@@ -25,18 +25,20 @@ public class ValidacionDNI {
         File fDniNotOk = new File("dniNotOk.txt");
         String linea;
         
-        try (BufferedReader bfr = new BufferedReader(new FileReader(fDni));) {
+        try (BufferedReader bfr = new BufferedReader(new FileReader(fDni));
+                BufferedWriter bfwOk = new BufferedWriter(new FileWriter(fDniOk));
+                BufferedWriter bfwNotOk = new BufferedWriter(new FileWriter(fDniNotOk));) {
             do {
                 linea = bfr.readLine();
                 if (linea != null) {
                     if (comprobarFormato(linea)) {
                         if (dniValido(linea)) {
-                            añadirFichero(linea, fDniOk);
+                            bfwOk.write(linea + "\n");
                         } else {
-                            añadirFichero(linea, fDniNotOk);
+                            bfwNotOk.write(linea + "\n");
                         }
                     } else {
-                        añadirFichero(linea, fDniNotOk);
+                        bfwNotOk.write(linea + "\n");
                     }                
                 } 
             } while (linea != null);            
@@ -71,16 +73,8 @@ public class ValidacionDNI {
                         'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'}; 
         numero = Integer.parseInt(linea.substring(0, 8));
         res = numero % 23;
-        if (linea.charAt(7) == letras[res]) {
+        if (linea.charAt(8) == letras[res]) {
             return true;
         } else return false;        
-    }
-    
-    public static void añadirFichero(String linea, File f) {
-        try (BufferedWriter bfw = new BufferedWriter(new FileWriter(f, true));) {
-            bfw.write(linea + "\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
