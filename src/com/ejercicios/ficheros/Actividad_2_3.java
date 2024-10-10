@@ -24,10 +24,10 @@ public class Actividad_2_3 {
         File f = new File("YoMeDrogoQueMasDa.txt");        
         System.out.print("Introduce un texto a buscar en el fichero: ");
         texto = sc.nextLine();
-        leerFicheroConArray(f, texto);
+        leerFichero(f, texto);
     }
     
-    public static void leerFicheroConArray(File f, String texto) {
+    public static void leerFichero(File f, String texto) {
         int i = 0;        
         try (BufferedReader fbr = new BufferedReader(new FileReader(f));) {   
             String linea = fbr.readLine();
@@ -51,9 +51,5 @@ public class Actividad_2_3 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    public static void leerFicheroConIndexOf () {
-        
     }
 }
