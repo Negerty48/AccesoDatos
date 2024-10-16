@@ -12,9 +12,9 @@ import java.sql.*;
  */
 public class Conexion {
 
-    public static final String URL = "jdbc:mysql://localhost:3306";
+    public static final String URL = "jdbc:mysql://localhost:3306/empresa";
     public static final String USER = "root";
-    public static final String PWD = "";
+    public static final String PWD = "root";
 
     public static void main(String[] args) {
         try {

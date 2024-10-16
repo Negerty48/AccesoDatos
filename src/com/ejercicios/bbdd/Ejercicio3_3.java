@@ -13,7 +13,7 @@ import java.sql.*;
 public class Ejercicio3_3 {
     public static final String URL = "jdbc:mysql://localhost:3306/empresa";
     public static final String USER = "root";
-    public static final String PWD = "";
+    public static final String PWD = "root";
     
     public static void main(String[] args) {
         try {
@@ -22,11 +22,12 @@ public class Ejercicio3_3 {
             e.printStackTrace();
         }
         try (Connection con = DriverManager.getConnection(URL, USER, PWD);
-                PreparedStatement ps = con.prepareStatement("SELECT * FROM clientes",
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM CLIENTES",
                         ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 ResultSet rs = ps.executeQuery();) {
             int i = 1;
             rs.last();
+            rs.next();
             while (rs.previous()) {
                 System.out.println("[" + (i++) + "]");
                 System.out.println("DNI: " + rs.getString("DNI"));

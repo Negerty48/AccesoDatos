@@ -13,7 +13,7 @@ import java.sql.*;
 public class InsertInto {
     public static final String URL = "jdbc:mysql://localhost:3306/empresa";
     public static final String USER = "root";
-    public static final String PWD = "";
+    public static final String PWD = "root";
     
     public static void main(String[] args) {
         try {
@@ -28,7 +28,7 @@ public class InsertInto {
                     + "('89012345E', 'HOJAS', null)," 
                     + "('56789012B', 'SAMPER', '29730')," 
                     + "('09876543K', 'LAMIQUIZ', null);");
-            System.out.println(nFil + " FIlas insertadas.");
+            System.out.println(nFil + " Filas insertadas.");
         } catch (Exception e) {
             e.printStackTrace();
         }
